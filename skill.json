@@ -1,0 +1,74 @@
+{
+  "name": "genpark-personal-agent-flight-seat-upgrade-auction-sniper-skill",
+  "title": "Flight Seat Upgrade Auction Sniper & Cabin Bidder Skill",
+  "version": "1.0.0",
+  "description": "Airline dynamic plusgrade upgrade auction monitoring, premium cabin load-factor projection, historical acceptance bid quantile modeling, and optimal bid recommendation for personal travel agents. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "organization": {
+    "name": "GenPark Inc.",
+    "url": "https://www.genpark.ai",
+    "linkedin": "https://www.linkedin.com/company/92955550"
+  },
+  "mcp_version": "2024-11-05",
+  "category": "personal-agent",
+  "tools": [
+    {
+      "name": "calculate_optimal_upgrade_bid",
+      "description": "Calculate the optimal blind-auction bid for business/first class seats balancing win-rate probability against retail cash ticket spread.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "economy_ticket_cost_usd": {
+            "type": "number"
+          },
+          "retail_business_ticket_cost_usd": {
+            "type": "number"
+          },
+          "minimum_allowable_bid_usd": {
+            "type": "number"
+          },
+          "maximum_allowable_bid_usd": {
+            "type": "number"
+          },
+          "unsold_premium_seats_count": {
+            "type": "integer"
+          },
+          "hours_prior_to_departure": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "economy_ticket_cost_usd",
+          "retail_business_ticket_cost_usd",
+          "minimum_allowable_bid_usd",
+          "unsold_premium_seats_count"
+        ]
+      }
+    },
+    {
+      "name": "audit_cabin_amenity_arbitrage_value",
+      "description": "Quantify tangible monetary value of premium cabin amenities (lounge access, checked baggage waiver, lie-flat sleep delta) against bid cost.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "flight_duration_hours": {
+            "type": "number"
+          },
+          "bid_amount_usd": {
+            "type": "number"
+          },
+          "has_lounge_access": {
+            "type": "boolean"
+          },
+          "extra_bags_count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "flight_duration_hours",
+          "bid_amount_usd"
+        ]
+      }
+    }
+  ]
+}
